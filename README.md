@@ -2,8 +2,6 @@
 
 This project focuses on using machine learning techniques, specifically a neural network with the **VGG16 architecture**, for the detection of diabetic retinopathy. The code includes data preprocessing (especially data augmentation), model creation, training, and performance evaluation.
 
-Certainly! Here's a brief explanation of the provided code that you can include in your README:
-
 ## Code Overview
 
 ### 1. Variables
