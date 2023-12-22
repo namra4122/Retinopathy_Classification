@@ -33,7 +33,7 @@ Certainly! Here's a brief explanation of the provided code that you can include 
 ### 4. Create Model
 
 - Imports pre-trained VGG16 model with specified layers trainable/untrainable.
-- Adds new fully connected layers for classification.
+- Add new fully connected layers for classification.
 
 ### 5. Train the Model
 
@@ -42,8 +42,8 @@ Certainly! Here's a brief explanation of the provided code that you can include 
 
 ### 6. Plots and Values
 
-![Accuracy and Loss Plot](path/to/accuracy_loss_plot.png)
-![Loss per Epochs Plot](path/to/lose_per_epochs.png)
+![Accuracy per Epoch Plot](accuracy_per_epoch.png)
+![Loss per Epoch Plot](loss_per_epoch.png)
 
 ### 7. Performance Evaluation
 
