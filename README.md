@@ -1,4 +1,4 @@
-# Detection Of Diabetic Retinopathy Using Machine Learning
+# Classification Of Diabetic Retinopathy Using Machine Learning
 
 This project focuses on using machine learning techniques, specifically a neural network with the **VGG16 architecture**, for the detection of diabetic retinopathy. The code includes data preprocessing, model creation, training, and performance evaluation.
 
