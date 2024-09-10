@@ -1,53 +1,128 @@
-# Classification Of Diabetic Retinopathy Using Machine Learning
+# Diabetic Retinopathy Classification
 
-This project focuses on using machine learning techniques, specifically a neural network with the **VGG16 architecture**, for the detection of diabetic retinopathy. The code includes data preprocessing (especially data augmentation), model creation, training, and performance evaluation.
+This project implements various deep learning models to classify diabetic retinopathy severity using retinal images. The models include VGG16, VGG19, Xception, and InceptionV3, all pre-trained on ImageNet and fine-tuned for this specific task.
 
-## Code Overview
+## Table of Contents
 
-### 1. Variables
+1. [Project Overview](#project-overview)
+2. [Prerequisites](#prerequisites)
+3. [Dataset](#dataset)
+4. [Model Architecture](#model-architecture)
+5. [Training Process](#training-process)
+6. [Performance Evaluation](#performance-evaluation)
+7. [Usage](#usage)
+8. [Results](#results)
+9. [Future Work](#future-work)
 
-- **dim:** Image dimensions (176x208 pixels).
-- **test_split_percent:** Percentage of data for testing (10%).
-- **validation_split_percent:** Percentage of data for validation (20%).
-- **zoom:** Range for image zooming during training.
-- **bright_range:** Range for adjusting image brightness.
-- **layers_unlocked:** Flag to determine if pre-trained layers should be unlocked.
-- **lr:** Learning rate for the optimizer (0.0001).
-- **batch:** Batch size for model fitting (20).
-- **eps:** Number of training epochs (30).
-- **momentum:** Momentum of the Stochastic Gradient Descent (SGD) optimizer (0.9).
-- **save_model_name:** Auto-generated name for saving the model.
+## Project Overview
 
-### 2. Import Data
+Diabetic retinopathy is a diabetes complication that affects the eyes. Early detection is crucial for preventing vision loss. This project aims to automate the classification of diabetic retinopathy severity using machine learning techniques on retinal images.
 
-- Data is loaded using `flow_from_directory` from specified directories.
-- Train-test split is performed.
+## Prerequisites
 
-### 3. Sanity Checks
+The project requires the following libraries:
 
-- Checks and displays array dimensions, images, and channels.
-- Preprocesses images.
+- TensorFlow
+- NumPy
+- Matplotlib
+- Scikit-learn
+- Seaborn
+- Pillow
 
-### 4. Create Model
+You can install these dependencies using pip:
 
-- Imports pre-trained VGG16 model with specified layers trainable/untrainable.
-- Add new fully connected layers for classification.
+```
+pip install tensorflow numpy matplotlib scikit-learn seaborn pillow
+```
 
-### 5. Train the Model
+## Dataset
 
-- Compiles the model using SGD optimizer and categorical cross-entropy loss.
-- Fits the model on the training data with validation split.
+The dataset should be organized in the following structure:
 
-### 6. Plots and Values
+```
+Diabetic Retinopathy ML Dataset/
+├── train/
+│   ├── class_0/
+│   ├── class_1/
+│   ├── class_2/
+│   ├── class_3/
+│   └── class_4/
+└── test/
+    ├── class_0/
+    ├── class_1/
+    ├── class_2/
+    ├── class_3/
+    └── class_4/
+```
 
-![Accuracy per Epoch Plot](accuracy_per_epoch.png)
-![Loss per Epoch Plot](loss_per_epoch.png)
+Each class represents a severity level of diabetic retinopathy.
 
-### 7. Performance Evaluation
+## Model Architecture
 
-- Train Accuracy: 97.44%
-- Validation Accuracy: 84.17%
-- Test Accuracy: 83.30%
+The project implements four different models:
 
+1. VGG16
+2. VGG19
+3. Xception
+4. InceptionV3
 
+Each model is pre-trained on ImageNet and fine-tuned for diabetic retinopathy classification. The models are modified by:
 
+- Removing the top layers
+- Adding custom fully connected layers
+- Setting specific layers to be trainable or non-trainable
+
+## Training Process
+
+The training process includes:
+
+1. Data preprocessing and augmentation
+2. Splitting data into train, validation, and test sets
+3. Model compilation with SGD optimizer and categorical crossentropy loss
+4. Training for a specified number of epochs with early stopping
+
+Key hyperparameters:
+
+- Image dimensions: 176x208
+- Batch size: 16-64
+- Learning rate: 0.0001
+- Momentum: 0.9
+- Epochs: 30 (adjustable)
+
+## Performance Evaluation
+
+The models are evaluated on three sets:
+
+1. Training set
+2. Validation set
+3. Test set
+
+Metrics used:
+
+- Accuracy
+- Loss
+
+## Usage
+
+To train and evaluate a model:
+
+1. Prepare your dataset in the required directory structure.
+2. Adjust the hyperparameters in the script if needed.
+3. Run the script for the desired model (VGG16, VGG19, Xception, or InceptionV3).
+4. The trained model will be saved in HDF5 format.
+
+## Results
+
+The performance of each model is printed after training, showing the accuracy on the train, validation, and test sets.
+
+## Future Work
+
+Potential improvements and extensions:
+
+1. Implement k-fold cross-validation
+2. Experiment with other architectures (e.g., ResNet, DenseNet)
+3. Implement ensemble methods
+4. Analyze model interpretability using techniques like Grad-CAM
+5. Deploy the best performing model as a web service
+
+Feel free to contribute to this project by submitting pull requests or opening issues for bugs and feature requests.
